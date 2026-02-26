@@ -1,0 +1,52 @@
+# Resolve react_native_pods.rb via node so it works with yarn/npm/bun hoisting
+require Pod::Executable.execute_command('node', ['--print',
+  "require('path').resolve(require.resolve('react-native/package.json'), '..', 'scripts', 'react_native_pods.rb')",
+]).strip
+
+# New Architecture is the default in RN 0.84, but being explicit is good practice.
+ENV['RCT_NEW_ARCH_ENABLED'] = '1'
+# RN 0.84 defaults to prebuilt rncore xcframeworks. Disable to avoid duplicate
+# ObjC class warnings between React.framework and the Xcode debug dylib.
+ENV['RCT_USE_PREBUILT_RNCORE'] = '0'
+
+# min_ios_version_supported is a helper from react_native_pods.rb (resolves to 15.1 for RN 0.76).
+platform :ios, min_ios_version_supported
+
+prepare_react_native_project!
+
+target 'ReactNativePoC' do
+  # Podfile is in ios/ — pass parent dir so autolinking finds package.json at the JS root.
+  app_path = "#{Pod::Config.instance.installation_root.parent}"
+
+  config = use_native_modules! app_path
+
+  # Local TurboModule pod — runs isolated Codegen via install_modules_dependencies
+  # to avoid duplicate symbol conflicts with FBReactNativeSpec-generated.mm
+  pod 'TescoNativeBridge', :path => './TescoNativeBridgePod'
+
+  use_react_native!(
+    :path => config[:reactNativePath],
+    # Hermes is the default JS engine for RN 0.76 New Architecture.
+    :hermes_enabled => true,
+    # package.json lives one level up from ios/ (the JS project root).
+    :app_path => app_path
+  )
+
+  post_install do |installer|
+    # Required by RN New Architecture — sets compiler flags, linker settings, etc.
+    react_native_post_install(
+      installer,
+      config[:reactNativePath],
+      :mac_catalyst_enabled => false,
+    )
+  end
+end
+
+# ─── SPM Note ───────────────────────────────────────────────────────────────
+# React Native does not yet distribute via Swift Package Manager.
+# Blockers as of RN 0.76:
+#   • Codegen (TurboModule spec generation) is driven by CocoaPods pod hooks
+#   • react_native_post_install configures Hermes build phases SPM can't replicate
+#   • No Package.swift in the react-native npm package
+# Revisit when RN 0.80+ ships full SPM support (CocoaPods trunk read-only: Dec 2026).
+# ────────────────────────────────────────────────────────────────────────────

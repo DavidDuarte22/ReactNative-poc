@@ -1,0 +1,32 @@
+# JS / Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Metro bundler
+.metro-health-check*
+
+# React Native generated
+build/
+
+# iOS
+# Stale workspace that Xcode auto-recreates at root when ios/ workspace is moved
+/ReactNativePoC.xcworkspace/
+/Pods/
+ios/Pods/
+ios/ReactNativePoC.xcworkspace/xcuserdata/
+ios/ReactNativePoC.xcodeproj/xcuserdata/
+ios/ReactNativePoC.xcodeproj/project.xcworkspace/xcuserdata/
+ios/.xcode.env.local
+*.xcuserstate
+DerivedData/
+
+# TescoNativeBridgePod generated
+ios/TescoNativeBridgePod/build/
+
+# macOS
+.DS_Store
+
+# Environment
+.env
+.env.local
