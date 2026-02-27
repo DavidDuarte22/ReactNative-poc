@@ -7,6 +7,7 @@
     "ios": "react-native run-ios"
   },
   "dependencies": {
+    "expo-modules-core": "^55.0.12",
     "react": "19.2.3",
     "react-native": "0.84.0"
   },

@@ -6,28 +6,24 @@
 #import <React/RCTBundleURLProvider.h>
 #import <ReactCommon/RCTTurboModuleManager.h>
 #import <React/CoreModulesPlugins.h>
-// RN 0.84: Hermes runtime factory required by RCTJSRuntimeConfiguratorProtocol
 #import <React/RCTHermesInstanceFactory.h>
 #import <React/RCTNetworking.h>
 #import <React/RCTHTTPRequestHandler.h>
 #import <React/RCTDataRequestHandler.h>
 #import <React/RCTFileRequestHandler.h>
-#import <TescoNativeBridge/TescoNativeBridge.h>
+#import <ExpoModulesCore/EXRuntime.h>
+#import <ExpoModulesCore/EXHostWrapper.h>
+#import "ReactNativePoC-Swift.h"
 #include <react/nativemodule/defaults/DefaultTurboModules.h>
 #include <react/featureflags/ReactNativeFeatureFlags.h>
 #include <react/featureflags/ReactNativeFeatureFlagsOverridesOSSStable.h>
+#include <ReactCommon/RCTHost.h>
 
 using namespace facebook::react;
 
-// ---------------------------------------------------------------------------
-// TescoRNHost — brownfield host for React Native 0.84 New Architecture.
-//
-// In RN 0.84, RCTRootViewFactory requires the caller to supply a JS runtime
-// factory via RCTJSRuntimeConfiguratorProtocol. We implement it here to
-// return the Hermes runtime (same engine used by default in all RN 0.84 apps).
-// ---------------------------------------------------------------------------
-
-@interface TescoRNHost () <RCTTurboModuleManagerDelegate, RCTJSRuntimeConfiguratorProtocol>
+@interface TescoRNHost () <RCTTurboModuleManagerDelegate,
+                           RCTJSRuntimeConfiguratorProtocol,
+                           RCTHostRuntimeDelegate>
 @property (nonatomic, strong) RCTRootViewFactory *factory;
 @property (nonatomic, assign) BOOL started;
 @end
@@ -36,11 +32,8 @@ using namespace facebook::react;
 
 - (instancetype)init {
     if (self = [super init]) {
-        // Initialize React Native feature flags for bridgeless New Architecture.
-        // We use dangerouslyForceOverride (not override) because some flags may
-        // be accessed early (e.g. InspectorFlags singleton) before TescoRNHost
-        // is instantiated. dangerouslyForceOverride creates a fresh accessor and
-        // swaps it in, bypassing the "accessed before override" guard.
+        // dangerouslyForceOverride is required (not override) because some flags may
+        // be accessed before TescoRNHost is instantiated; override() would silently fail.
         static dispatch_once_t featureFlagToken;
         dispatch_once(&featureFlagToken, ^{
             ReactNativeFeatureFlags::dangerouslyForceOverride(
@@ -55,7 +48,6 @@ using namespace facebook::react;
                 }
                 newArchEnabled:YES];
 
-        // Required in RN 0.84: supply the Hermes JS runtime factory.
         config.jsRuntimeConfiguratorDelegate = self;
 
         _factory = [[RCTRootViewFactory alloc]
@@ -65,7 +57,7 @@ using namespace facebook::react;
     return self;
 }
 
-// MARK: - RCTJSRuntimeConfiguratorProtocol (RN 0.84)
+// MARK: - RCTJSRuntimeConfiguratorProtocol
 
 - (JSRuntimeFactoryRef)createJSRuntimeFactory {
     return jsrt_create_hermes_factory();
@@ -76,7 +68,11 @@ using namespace facebook::react;
 - (void)start {
     if (_started) return;
     _started = YES;
-    [_factory createReactHost:nil];
+    // createReactHost: returns the new host but does not store it in factory.reactHost.
+    // Assign it manually so that the later viewWithModuleName: call reuses the same instance.
+    RCTHost *host = [_factory createReactHost:nil];
+    _factory.reactHost = host;
+    host.runtimeDelegate = self;
 }
 
 - (UIView *)createRootViewWithModuleName:(NSString *)moduleName
@@ -86,20 +82,28 @@ using namespace facebook::react;
                           launchOptions:nil];
 }
 
+// MARK: - RCTHostRuntimeDelegate
+
+- (void)host:(RCTHost *)host didInitializeRuntime:(facebook::jsi::Runtime &)runtime {
+    EXRuntime *expoRuntime = [[EXRuntime alloc] initWithRuntime:runtime];
+    EXHostWrapper *hostWrapper = [[EXHostWrapper alloc] initWithHost:host];
+    [ExpoModulesAdapter setupWithRuntime:expoRuntime hostWrapper:hostWrapper];
+}
+
 // MARK: - RCTTurboModuleManagerDelegate
 
-/// Return the Class for a module by name. RCTCoreModulesClassProvider handles all built-in RN modules.
 - (Class)getModuleClassFromName:(const char *)name {
-    if (strcmp(name, "TescoNativeBridge") == 0) {
-        return [TescoNativeBridge class];
+    // ExpoBridgeModule (registered as "ExpoModulesCore") is initialised via
+    // host:didInitializeRuntime: instead of the TurboModule path.
+    if (strcmp(name, "ExpoModulesCore") == 0) {
+        return nil;
     }
     return RCTCoreModulesClassProvider(name);
 }
 
-/// RN 0.84 required method: given a class, return a custom instance (or nil for default init).
-/// RCTNetworking requires a custom init with HTTP/data/file request handlers so that
-/// dev-tools symbolication and JS fetch() work in New Architecture (bridgeless) mode.
 - (id<RCTTurboModule>)getModuleInstanceFromClass:(Class)moduleClass {
+    // RCTNetworking requires a custom init so that HTTP/data/file handlers are
+    // registered in bridgeless mode (needed for fetch() and dev-tools symbolication).
     if (moduleClass == RCTNetworking.class) {
         return (id<RCTTurboModule>)[[RCTNetworking alloc]
             initWithHandlersProvider:^NSArray<id<RCTURLRequestHandler>> *(RCTModuleRegistry *moduleRegistry) {
@@ -113,8 +117,6 @@ using namespace facebook::react;
     return nil;
 }
 
-/// Provide C++ TurboModules. Always delegate to DefaultTurboModules so that
-/// core RN C++ modules (NativeMicrotasksCxx, etc.) are auto-registered.
 - (std::shared_ptr<TurboModule>)getTurboModule:(const std::string &)name
                                      jsInvoker:(std::shared_ptr<CallInvoker>)jsInvoker {
     return DefaultTurboModules::getTurboModule(name, jsInvoker);

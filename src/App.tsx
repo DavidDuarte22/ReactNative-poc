@@ -2,7 +2,7 @@
  * App.tsx — Root React Native component.
  *
  * Receives userId + locale as initialProperties from native (ReactViewController).
- * Calls TescoNativeBridge.onButtonTapped via the Codegen TurboModule spec.
+ * Calls TescoNativeBridge.onButtonTapped via the Expo Module.
  */
 
 import React from 'react';
@@ -13,7 +13,11 @@ import {
   StyleSheet,
   ActivityIndicator,
 } from 'react-native';
-import NativeTescoNativeBridge from '../NativeTescoNativeBridge';
+import { requireNativeModule } from 'expo-modules-core';
+
+const TescoNativeBridge = requireNativeModule<{
+  onButtonTapped(message: string): Promise<void>;
+}>('TescoNativeBridge');
 
 // Props injected by RCTRootViewFactory initialProperties
 type Props = {
@@ -29,8 +33,7 @@ export default function App({ userId = 'unknown', locale = 'en' }: Props) {
   const handleCallNative = async () => {
     setLoading(true);
     try {
-      // TurboModule call — JSI, no JSON bridge serialisation.
-      await NativeTescoNativeBridge.onButtonTapped(
+      await TescoNativeBridge.onButtonTapped(
         `Hello from RN! userId=${userId}`,
       );
     } catch (e) {
@@ -57,12 +60,12 @@ export default function App({ userId = 'unknown', locale = 'en' }: Props) {
         {loading ? (
           <ActivityIndicator color="#fff" />
         ) : (
-          <Text style={styles.buttonText}>Call Native (TurboModule)</Text>
+          <Text style={styles.buttonText}>Call Native</Text>
         )}
       </TouchableOpacity>
 
       <Text style={styles.hint}>
-        Tap the button → TurboModule → NotificationCenter → UIAlertController
+        Tap the button → Expo Module → NotificationCenter → UIAlertController
       </Text>
     </View>
   );

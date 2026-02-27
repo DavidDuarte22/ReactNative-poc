@@ -6,8 +6,9 @@ yarn-error.log
 # Metro bundler
 .metro-health-check*
 
-# React Native generated
+# React Native generated (autolinking + Codegen output)
 build/
+ios/build/
 
 # iOS
 # Stale workspace that Xcode auto-recreates at root when ios/ workspace is moved

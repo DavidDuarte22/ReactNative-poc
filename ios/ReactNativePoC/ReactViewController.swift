@@ -48,7 +48,8 @@ final class ReactViewController: UIViewController {
     }
 
     private func observeTurboModuleCallbacks() {
-        // TescoNativeBridge.mm posts on the main queue before notifying.
+        // TescoNativeBridgeModule (Swift Expo module) posts from the JS/async thread.
+        // The handler dispatches to main before touching UIKit.
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(handleButtonTap(_:)),
@@ -59,13 +60,16 @@ final class ReactViewController: UIViewController {
 
     @objc private func handleButtonTap(_ notification: Notification) {
         let message = notification.userInfo?["message"] as? String ?? "Button tapped"
-        let alert = UIAlertController(
-            title: "Native Callback",
-            message: message,
-            preferredStyle: .alert
-        )
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            let alert = UIAlertController(
+                title: "Native Callback",
+                message: message,
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
+        }
     }
 }
 

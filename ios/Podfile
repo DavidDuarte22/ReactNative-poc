@@ -18,10 +18,15 @@ target 'ReactNativePoC' do
   # Podfile is in ios/ — pass parent dir so autolinking finds package.json at the JS root.
   app_path = "#{Pod::Config.instance.installation_root.parent}"
 
-  config = use_native_modules! app_path
+  config = use_native_modules!
 
-  # Local TurboModule pod — runs isolated Codegen via install_modules_dependencies
-  # to avoid duplicate symbol conflicts with FBReactNativeSpec-generated.mm
+  # expo-modules-core: powers the Swift Expo Module DSL (no C++ codegen required).
+  # ExpoModulesJSI is a separate podspec in the same package (JSI bindings layer).
+  pod 'ExpoModulesJSI', :path => '../node_modules/expo-modules-core'
+  pod 'ExpoModulesCore', :path => '../node_modules/expo-modules-core'
+
+  # TescoNativeBridge is now a pure Swift Expo Module.
+  # No codegen files, no install_modules_dependencies — just s.dependency 'ExpoModulesCore'.
   pod 'TescoNativeBridge', :path => './TescoNativeBridgePod'
 
   use_react_native!(

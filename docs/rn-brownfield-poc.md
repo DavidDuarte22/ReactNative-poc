@@ -99,6 +99,53 @@ const TescoNativeBridge = requireNativeModule('TescoNativeBridge');
 await TescoNativeBridge.onButtonTapped(message);
 ```
 
+### Brownfield wiring
+
+Expo Modules were designed for apps using `ExpoAppDelegate`. Integrating them into a brownfield app with a custom `RCTHost` requires explicit bootstrapping. The key insight is that `global.expo` must be installed into the JS runtime **before** the bundle is evaluated — otherwise `ExpoBridgeModule` (which expo-modules-core always registers) fires its deprecated initialisation path from the wrong thread and crashes.
+
+The solution hooks into `RCTHostRuntimeDelegate.host:didInitializeRuntime:`, which is called on the JS thread immediately after Hermes initialises and before `_loadJSBundle:` is dispatched.
+
+**Files added/changed:**
+
+| File | Role |
+|------|------|
+| `ExpoModulesAdapter.swift` | ObjC-callable Swift class; creates `AppContext`, registers modules, installs `global.expo` |
+| `TescoRNHost.mm` | Conforms to `RCTHostRuntimeDelegate`; sets `runtimeDelegate` on the host; calls `ExpoModulesAdapter` |
+| `TescoNativeBridgeModule.swift` | Swift Expo Module replacing the ObjC++ TurboModule |
+| `ExpoModulesProvider.swift` | Declares the module list; discovered via `NSClassFromString("ExpoModulesProvider")` |
+| `TescoNativeBridge.podspec` | `s.dependency "ExpoModulesCore"` — no `install_modules_dependencies` needed |
+| `Podfile` | Adds `ExpoModulesCore` and `ExpoModulesJSI` pods |
+| `babel.config.js` | Inline plugin replaces `process.env.EXPO_OS` (normally done by `babel-preset-expo`) |
+
+**Sequence:**
+
+```
+RCTHost.start()
+  └─ JS thread: initializeRuntime callback
+       ├─ installJSBindings
+       ├─ host:didInitializeRuntime:           ← TescoRNHost receives this
+       │    └─ ExpoModulesAdapter.setup()
+       │         ├─ AppContext()
+       │         ├─ registerNativeModules()     ← finds ExpoModulesProvider via NSClassFromString
+       │         ├─ setHostWrapper()
+       │         └─ JavaScriptActor.assumeIsolated { appContext._runtime = runtime }
+       │              └─ AppContext._runtime.didSet → prepareRuntime()
+       │                   └─ global.expo = coreObject  ← installed before bundle loads
+       └─ _loadJSBundle:
+            └─ evaluateJavaScript()
+                 └─ NativeModules.ExpoModulesCore (lazy)
+                      └─ ExpoBridgeModule.maybeSetupAppContext
+                           └─ global.expo exists → skip deprecated path ✓
+```
+
+### Hard problems encountered
+
+| Problem | Root cause | Fix |
+|---------|-----------|-----|
+| `JavaScriptActor precondition failed` + `Expo is being initialized from the deprecated ExpoBridgeModule` | `host:didInitializeRuntime:` was never called — `_factory.reactHost` was `nil` when we set `runtimeDelegate` because `createReactHost:` returns the host without storing it in `factory.reactHost` | Capture the return value and assign: `RCTHost *host = [_factory createReactHost:nil]; _factory.reactHost = host; host.runtimeDelegate = self;` |
+| `process.env.EXPO_OS is not defined` | `@react-native/babel-preset` doesn't replace this env var at build time (only `babel-preset-expo` does) | Inline Babel visitor in `babel.config.js` that replaces `process.env.EXPO_OS` with `'ios'` |
+| `Call must be made on main thread` on alert presentation | `TescoNativeBridgeModule.AsyncFunction` posts the notification from a background thread; old ObjC++ module used to dispatch to main before posting | Wrap `UIAlertController` presentation in `DispatchQueue.main.async` in `ReactViewController` |
+
 ### Pros
 
 - **Dramatically less boilerplate** — one Swift file replaces five files (spec, two generated C++ files, ObjC++ header, ObjC++ implementation).
