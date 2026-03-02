@@ -1,0 +1,9 @@
+{
+  "expo.jsEngine": "hermes",
+  "ios.forceStaticLinking": "[]",
+  "EX_DEV_CLIENT_NETWORK_INSPECTOR": "true",
+  "apple.privacyManifestAggregationEnabled": "true",
+  "ios.buildReactNativeFromSource": "true",
+  "ios.useFrameworks": "static",
+  "ios.brownfieldTargetName": "tescornappbrownfield"
+}
