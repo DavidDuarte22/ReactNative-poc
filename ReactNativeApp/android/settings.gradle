@@ -1,26 +1,24 @@
-// Resolve the node executable path at configuration time.
-// Android Studio (launched from Dock/Spotlight) inherits a minimal launchd PATH that does not
-// include /usr/local/bin or /opt/homebrew/bin, so "node" alone is not found.
-// We probe known macOS locations and fall back to a login-shell `which node` lookup.
-def findNode = {
-  for (def candidate in ["/usr/local/bin/node", "/opt/homebrew/bin/node", "/usr/bin/node"]) {
-    if (new File(candidate).exists()) return candidate
-  }
-  try {
-    def proc = ["/bin/zsh", "-l", "-c", "which node"].execute()
-    proc.waitFor()
-    def path = proc.text.trim()
-    if (path && new File(path).exists()) return path
-  } catch (ignored) {}
-  return "node"  // last resort — works if node is already on the daemon's PATH
-}
-def NODE = findNode()
-
 pluginManagement {
+  // Resolve node at configuration time — Android Studio launched from Dock/Spotlight
+  // inherits a minimal launchd PATH that excludes /usr/local/bin and /opt/homebrew/bin.
+  // Probe known macOS locations, fall back to a login-shell lookup, store for reuse below.
+  def nodeExec = ["/usr/local/bin/node", "/opt/homebrew/bin/node", "/usr/bin/node"]
+      .find { new File(it).exists() }
+  if (!nodeExec) {
+    try {
+      def proc = ["/bin/zsh", "-l", "-c", "which node"].execute()
+      proc.waitFor()
+      def path = proc.text.trim()
+      if (path && new File(path).exists()) nodeExec = path
+    } catch (ignored) {}
+  }
+  if (!nodeExec) nodeExec = "node"
+  System.setProperty("node.executable", nodeExec)
+
   def reactNativeGradlePlugin = new File(
     providers.exec {
       workingDir(rootDir)
-      commandLine(NODE, "--print", "require.resolve('@react-native/gradle-plugin/package.json', { paths: [require.resolve('react-native/package.json')] })")
+      commandLine(nodeExec, "--print", "require.resolve('@react-native/gradle-plugin/package.json', { paths: [require.resolve('react-native/package.json')] })")
     }.standardOutput.asText.get().trim()
   ).getParentFile().absolutePath
   includeBuild(reactNativeGradlePlugin)
@@ -28,7 +26,7 @@ pluginManagement {
   def expoPluginsPath = new File(
     providers.exec {
       workingDir(rootDir)
-      commandLine(NODE, "--print", "require.resolve('expo-modules-autolinking/package.json', { paths: [require.resolve('expo/package.json')] })")
+      commandLine(nodeExec, "--print", "require.resolve('expo-modules-autolinking/package.json', { paths: [require.resolve('expo/package.json')] })")
     }.standardOutput.asText.get().trim(),
     "../android/expo-gradle-plugin"
   ).absolutePath
@@ -59,7 +57,7 @@ include ':brownfield'
 def brownfieldPluginsPath = new File(
   providers.exec {
     workingDir(rootDir)
-    commandLine(NODE, "--print", "require.resolve('expo-brownfield/package.json')")
+    commandLine(System.getProperty("node.executable", "node"), "--print", "require.resolve('expo-brownfield/package.json')")
   }.standardOutput.asText.get().trim(),
   "../gradle-plugins"
 ).absolutePath
