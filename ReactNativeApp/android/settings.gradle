@@ -1,16 +1,34 @@
+// Resolve the node executable path at configuration time.
+// Android Studio (launched from Dock/Spotlight) inherits a minimal launchd PATH that does not
+// include /usr/local/bin or /opt/homebrew/bin, so "node" alone is not found.
+// We probe known macOS locations and fall back to a login-shell `which node` lookup.
+def findNode = {
+  for (def candidate in ["/usr/local/bin/node", "/opt/homebrew/bin/node", "/usr/bin/node"]) {
+    if (new File(candidate).exists()) return candidate
+  }
+  try {
+    def proc = ["/bin/zsh", "-l", "-c", "which node"].execute()
+    proc.waitFor()
+    def path = proc.text.trim()
+    if (path && new File(path).exists()) return path
+  } catch (ignored) {}
+  return "node"  // last resort — works if node is already on the daemon's PATH
+}
+def NODE = findNode()
+
 pluginManagement {
   def reactNativeGradlePlugin = new File(
     providers.exec {
       workingDir(rootDir)
-      commandLine("node", "--print", "require.resolve('@react-native/gradle-plugin/package.json', { paths: [require.resolve('react-native/package.json')] })")
+      commandLine(NODE, "--print", "require.resolve('@react-native/gradle-plugin/package.json', { paths: [require.resolve('react-native/package.json')] })")
     }.standardOutput.asText.get().trim()
   ).getParentFile().absolutePath
   includeBuild(reactNativeGradlePlugin)
-  
+
   def expoPluginsPath = new File(
     providers.exec {
       workingDir(rootDir)
-      commandLine("node", "--print", "require.resolve('expo-modules-autolinking/package.json', { paths: [require.resolve('expo/package.json')] })")
+      commandLine(NODE, "--print", "require.resolve('expo-modules-autolinking/package.json', { paths: [require.resolve('expo/package.json')] })")
     }.standardOutput.asText.get().trim(),
     "../android/expo-gradle-plugin"
   ).absolutePath
@@ -41,7 +59,7 @@ include ':brownfield'
 def brownfieldPluginsPath = new File(
   providers.exec {
     workingDir(rootDir)
-    commandLine("node", "--print", "require.resolve('expo-brownfield/package.json')")
+    commandLine(NODE, "--print", "require.resolve('expo-brownfield/package.json')")
   }.standardOutput.asText.get().trim(),
   "../gradle-plugins"
 ).absolutePath
