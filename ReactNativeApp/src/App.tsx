@@ -1,12 +1,16 @@
 /**
  * App.tsx — Root React Native component.
  *
- * Receives userId + locale as initialProperties from native (ReactViewController).
- * Calls TescoNativeBridge.onButtonTapped via the Expo Module.
+ * Receives userId + locale as initialProperties from native.
+ *
+ * Bridge strategy (platform-specific):
+ *   iOS    → TescoNativeBridge TurboModule → NotificationCenter → UIAlertController
+ *   Android → BrownfieldMessaging.sendMessage → BridgeEvents SharedFlow → Compose badge
  */
 
 import React from 'react';
 import {
+  Platform,
   View,
   Text,
   TouchableOpacity,
@@ -14,10 +18,14 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { requireNativeModule } from 'expo-modules-core';
+import { sendMessage } from 'expo-brownfield';
 
-const TescoNativeBridge = requireNativeModule<{
-  onButtonTapped(message: string): Promise<void>;
-}>('TescoNativeBridge');
+const TescoNativeBridge =
+  Platform.OS === 'ios'
+    ? requireNativeModule<{ onButtonTapped(message: string): Promise<void> }>(
+        'TescoNativeBridge',
+      )
+    : null;
 
 // Props injected by RCTRootViewFactory initialProperties
 type Props = {
@@ -33,11 +41,13 @@ export default function App({ userId = 'unknown', locale = 'en' }: Props) {
   const handleCallNative = async () => {
     setLoading(true);
     try {
-      await TescoNativeBridge.onButtonTapped(
-        `Hello from RN! userId=${userId}`,
-      );
+      if (Platform.OS === 'android') {
+        sendMessage({ event: 'buttonTapped', userId });
+      } else {
+        await TescoNativeBridge!.onButtonTapped(`Hello from RN! userId=${userId}`);
+      }
     } catch (e) {
-      console.error('[TescoNativeBridge] onButtonTapped failed:', e);
+      console.error('[Bridge] call failed:', e);
     } finally {
       setLoading(false);
     }
@@ -65,7 +75,9 @@ export default function App({ userId = 'unknown', locale = 'en' }: Props) {
       </TouchableOpacity>
 
       <Text style={styles.hint}>
-        Tap the button → Expo Module → NotificationCenter → UIAlertController
+        {Platform.OS === 'android'
+          ? 'Tap → BrownfieldMessaging → SharedFlow → Compose badge'
+          : 'Tap → Expo Module → NotificationCenter → UIAlertController'}
       </Text>
     </View>
   );

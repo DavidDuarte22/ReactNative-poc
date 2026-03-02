@@ -25,6 +25,13 @@ ReactNativeApp/android/local.properties
 ReactNativeApp/android/**/*.keystore
 !ReactNativeApp/android/app/debug.keystore
 
+# Android — TescoAndroidApp (native consumer)
+TescoAndroidApp/.gradle/
+TescoAndroidApp/build/
+TescoAndroidApp/app/build/
+TescoAndroidApp/local.properties
+TescoAndroidApp/**/*.keystore
+
 # Xcode
 *.xcuserstate
 DerivedData/
