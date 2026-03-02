@@ -42,6 +42,15 @@ dependencies {
   // In production, replace with a versioned Nexus artifact.
   implementation("com.parser.rnpoc.ReactNativePoC.brownfield:brownfield:1.0.0")
 
+  // AppCompat — required because MainActivity extends BrownfieldActivity (extends AppCompatActivity)
+  implementation("androidx.appcompat:appcompat:1.7.0")
+
+  // react-android compileOnly: BrownfieldActivity implements DefaultHardwareBackBtnHandler from
+  // react-android, which is an `implementation` dep of :brownfield (not api). The Kotlin compiler
+  // needs the type on the classpath because MainActivity extends BrownfieldActivity. Runtime
+  // classes are bundled inside the APK via brownfield's transitive deps — no duplication.
+  compileOnly("com.facebook.react:react-android:0.83.2")
+
   // Fragment support — required by ReactNativeViewFactory (wraps ReactDelegate in a Fragment)
   implementation("androidx.fragment:fragment-ktx:1.8.4")
 

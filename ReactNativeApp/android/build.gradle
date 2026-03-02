@@ -1,5 +1,10 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+// NDK 27.0.12077973 (preferred by RN 0.83) is not installed; use the installed NDK 29 instead.
+ext.ndkVersion = "29.0.14206865"
+// Build Tools 35.0.0 (expo plugin fallback) is corrupted; use installed 36.0.0 instead.
+ext.buildToolsVersion = "36.0.0"
+
 buildscript {
   repositories {
     google()

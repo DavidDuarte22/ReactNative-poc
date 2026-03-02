@@ -57,9 +57,13 @@ class ReactNativeHostManager {
     loadReactNative(application)
     BrownfieldLifecycleDispatcher.onApplicationCreate(application)
 
+    // ReactBuildConfig.DEBUG is always false in the pre-built react-android AAR (library
+    // BuildConfig.DEBUG is never set to true in a pre-compiled artifact). Pass the brownfield
+    // module's own BuildConfig.DEBUG so Metro dev mode is active on debug builds.
     reactHost = ExpoReactHostFactory.getDefaultReactHost(
       context = application.applicationContext,
-      packageList = PackageList(application).packages
+      packageList = PackageList(application).packages,
+      useDevSupport = BuildConfig.DEBUG
     )
   }
 }

@@ -53,7 +53,19 @@ android {
 }
 
 dependencies {
-  api("com.facebook.react:react-android")
-  api("com.facebook.hermes:hermes-android")
+  // Explicit versions are required here so that TescoAndroidApp (the composite build
+  // consumer) can resolve these transitive deps when assembling its APK. The RN BOM
+  // that normally pins react-android / hermes-android versions is only applied inside
+  // the included :android composite build and is invisible to TescoAndroidApp's own
+  // dependency resolution. Declaring explicit versions makes them visible to any
+  // consumer without needing a resolutionStrategy workaround.
+  //
+  // implementation (not api): react-android and hermes-android are not exposed on
+  // TescoAndroidApp's compile classpath. TescoAndroidApp adds a compileOnly dep on
+  // react-android separately because BrownfieldActivity implements
+  // DefaultHardwareBackBtnHandler (from react-android), and MainActivity extends
+  // BrownfieldActivity — the Kotlin compiler needs the type on the classpath.
+  implementation("com.facebook.react:react-android:0.83.2")
+  implementation("com.facebook.hermes:hermes-android:0.14.1")
   compileOnly("androidx.fragment:fragment-ktx:1.6.1")
 }
