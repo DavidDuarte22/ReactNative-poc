@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "ios": "expo run:ios"
+    "ios": "expo run:ios",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "expo": "~55.0.0",
@@ -21,6 +22,7 @@
     "@react-native/metro-config": "0.83.2",
     "@react-native/typescript-config": "0.83.2",
     "@types/react": "^19.1.1",
+    "patch-package": "^8.0.1",
     "typescript": "5.0.4"
   },
   "engines": {
