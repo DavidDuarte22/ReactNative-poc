@@ -1,0 +1,48 @@
+graph TB
+    subgraph RN["ReactNativeApp — RN Team"]
+        src["App.tsx\nShared JS · Platform.OS split"]
+        tm["TescoNativeBridge\nExpo Module DSL  Swift / Kotlin"]
+    end
+
+    subgraph BUILD_IOS["iOS Build · CocoaPods + expo-brownfield"]
+        xcf1["tescornappbrownfield.xcframework\n~16 MB device slice"]
+        xcf2["hermesvm.xcframework\n~5 MB device slice"]
+    end
+
+    subgraph BUILD_AND["Android Build · Gradle composite build"]
+        aar["brownfield AAR\nreact-android + hermes bundled"]
+    end
+
+    subgraph IOS["TescoUIKitApp — iOS Team · Xcode only, no CocoaPods, no Node"]
+        ad["AppDelegate.swift\nReactNativeHostManager.initialize()"]
+        hv["HomeView SwiftUI\nReactNativeView  moduleName: TescoRNApp\ninitialProps: userId · locale"]
+        cs_ios["CartState.swift\nBridgeEvents.buttonTapped\nAnyPublisher — Void Never"]
+        badge_ios["Cart badge\n@Published count"]
+        ad --> hv
+        cs_ios --> badge_ios
+    end
+
+    subgraph AND["TescoAndroidApp — Android Team · no RN imports"]
+        ma["MainApplication.kt\nReactNativeHostManager.initialize()"]
+        hs["HomeScreen Compose\nReactNativeViewFactory.createFrameLayout\nlaunchOptions: userId · locale"]
+        cs_and["CartState.kt\nBridgeEvents.buttonTapped\nSharedFlow — Unit"]
+        badge_and["Cart badge\nStateFlow → recompose"]
+        ma --> hs
+        cs_and --> badge_and
+    end
+
+    %% Build pipeline
+    RN -->|"npx expo-brownfield build:ios"| BUILD_IOS
+    RN -->|"gradlew :brownfield:assemble"| BUILD_AND
+
+    %% Artifact delivery
+    BUILD_IOS -->|"embed XCFrameworks"| IOS
+    BUILD_AND -->|"implementation dep / Nexus"| AND
+
+    %% Native → RN  initialProps
+    hv -->|"initialProps"| src
+    hs -->|"launchOptions"| src
+
+    %% RN → Native  events
+    src -->|"TurboModule · onButtonTapped"| cs_ios
+    src -->|"BrownfieldMessaging · sendMessage"| cs_and
