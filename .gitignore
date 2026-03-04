@@ -27,7 +27,8 @@ ReactNativeApp/android/**/*.keystore
 
 # Android — TescoAndroidApp (native consumer)
 TescoAndroidApp/.gradle/
-TescoAndroidApp/.idea/
+TescoAndroidApp/.idea/*
+!TescoAndroidApp/.idea/gradle.xml
 TescoAndroidApp/build/
 TescoAndroidApp/app/build/
 TescoAndroidApp/local.properties

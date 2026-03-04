@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT">
+            <builds>
+              <build path="$PROJECT_DIR$/../ReactNativeApp/android" name="TescoRNApp">
+                <projects>
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/android" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/android/app" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/android/brownfield" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-brownfield/android" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-json-utils/android" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-manifests/android" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-core/android" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo/android" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo/node_modules/@expo/log-box/android" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo/node_modules/expo-constants/android" />
+                </projects>
+              </build>
+              <build path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-autolinking/android/expo-gradle-plugin" name="expo-gradle-plugin">
+                <projects>
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-autolinking/android/expo-gradle-plugin" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-autolinking-plugin" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-autolinking-plugin-shared" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-autolinking-settings-plugin" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-max-sdk-override-plugin" />
+                </projects>
+              </build>
+              <build path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-core/expo-module-gradle-plugin" name="expo-module-gradle-plugin">
+                <projects>
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-core/expo-module-gradle-plugin" />
+                </projects>
+              </build>
+              <build path="$PROJECT_DIR$/../ReactNativeApp/node_modules/@react-native/gradle-plugin" name="gradle-plugin-root">
+                <projects>
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/@react-native/gradle-plugin" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/@react-native/gradle-plugin/react-native-gradle-plugin" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/@react-native/gradle-plugin/settings-plugin" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/@react-native/gradle-plugin/shared" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/@react-native/gradle-plugin/shared-testutil" />
+                </projects>
+              </build>
+              <build path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-brownfield/gradle-plugins" name="expo-brownfield-gradle-plugins">
+                <projects>
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-brownfield/gradle-plugins" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-brownfield/gradle-plugins/brownfield" />
+                  <project path="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-brownfield/gradle-plugins/publish" />
+                </projects>
+              </build>
+            </builds>
+          </compositeBuild>
+        </compositeConfiguration>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="jbr-21" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/../ReactNativeApp/android" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/android/app" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/android/brownfield" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/@react-native/gradle-plugin" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/@react-native/gradle-plugin/react-native-gradle-plugin" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/@react-native/gradle-plugin/settings-plugin" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/@react-native/gradle-plugin/shared" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/@react-native/gradle-plugin/shared-testutil" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-brownfield/android" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-brownfield/gradle-plugins" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-brownfield/gradle-plugins/brownfield" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-brownfield/gradle-plugins/publish" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-json-utils/android" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-manifests/android" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-autolinking/android/expo-gradle-plugin" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-autolinking-plugin" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-autolinking-plugin-shared" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-autolinking-settings-plugin" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-max-sdk-override-plugin" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-core/android" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo-modules-core/expo-module-gradle-plugin" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo/android" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo/node_modules/@expo/log-box/android" />
+            <option value="$PROJECT_DIR$/../ReactNativeApp/node_modules/expo/node_modules/expo-constants/android" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
