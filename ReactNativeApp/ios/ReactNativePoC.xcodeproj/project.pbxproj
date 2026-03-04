@@ -1,0 +1,691 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2FC5F414258D4384BE9B3A34 /* Messaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF310CE4014947A984A55D97 /* Messaging.swift */; };
+		AA11BB22CC33DD44EE55FF66 /* BridgeEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22CC33DD44EE55FF667788 /* BridgeEvents.swift */; };
+		43C1A480771BE5DDBAB16BB0 /* libPods-ReactNativePoC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4AD4B48B17DD0729545C156 /* libPods-ReactNativePoC.a */; };
+		92E9B6AF41404E69AD9A373F /* ReactNativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B506F5119947BD999EAAF7 /* ReactNativeView.swift */; };
+		94AFAEC2E6E349C274D88094 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1BDE3974917DBF805570966C /* PrivacyInfo.xcprivacy */; };
+		C3772913CB5293EC5D63B732 /* libPods-ReactNativePoC-tescornappbrownfield.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2997BF01A4C5CC7B007BE1 /* libPods-ReactNativePoC-tescornappbrownfield.a */; };
+		C614EFD0324141B3947A3645 /* ReactNativeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F76CF5399240E691B74C66 /* ReactNativeDelegate.swift */; };
+		D0B086FBC0884415BD4FB59E /* ReactNativeHostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B996C00BC4AA48A488B3A /* ReactNativeHostManager.swift */; };
+		D3CF9929312C403C9EA8316C /* ExpoAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CADCFDAF17441AB31F9D68 /* ExpoAppDelegate.swift */; };
+		E1596F3F9B3048CCA391D095 /* ReactNativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E2B66EA9948F2BF21FF48 /* ReactNativeViewController.swift */; };
+		F4FB62B7B7E1409F97CE18B7 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812360C29004F63BEE79F6C /* State.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		035B996C00BC4AA48A488B3A /* ReactNativeHostManager.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = ReactNativeHostManager.swift; path = tescornappbrownfield/ReactNativeHostManager.swift; sourceTree = "<group>"; };
+		BB22CC33DD44EE55FF667788 /* BridgeEvents.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = BridgeEvents.swift; path = tescornappbrownfield/BridgeEvents.swift; sourceTree = "<group>"; };
+		08B5040E3631F44BD2487D4E /* Pods-ReactNativePoC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativePoC.debug.xcconfig"; path = "Target Support Files/Pods-ReactNativePoC/Pods-ReactNativePoC.debug.xcconfig"; sourceTree = "<group>"; };
+		1BDE3974917DBF805570966C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		333E5553A7574157B08688BF /* ReactNativeViewController.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; path = ReactNativeViewController.swift; sourceTree = "<group>"; };
+		354E2B66EA9948F2BF21FF48 /* ReactNativeViewController.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = ReactNativeViewController.swift; path = tescornappbrownfield/ReactNativeViewController.swift; sourceTree = "<group>"; };
+		3B85C0994F0D738DDD4D24EC /* Pods-ReactNativePoC-tescornappbrownfield.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativePoC-tescornappbrownfield.debug.xcconfig"; path = "Target Support Files/Pods-ReactNativePoC-tescornappbrownfield/Pods-ReactNativePoC-tescornappbrownfield.debug.xcconfig"; sourceTree = "<group>"; };
+		414C160A2C324483ACF1EF71 /* tescornappbrownfield.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; fileEncoding = 9; includeInIndex = 0; path = tescornappbrownfield.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44F76CF5399240E691B74C66 /* ReactNativeDelegate.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = ReactNativeDelegate.swift; path = tescornappbrownfield/ReactNativeDelegate.swift; sourceTree = "<group>"; };
+		51B7F1082F503CBE00AAA1FC /* TescoRNApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TescoRNApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B3307992B764AB0A9D84BE9 /* ExpoAppDelegate.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; path = ExpoAppDelegate.swift; sourceTree = "<group>"; };
+		5F2997BF01A4C5CC7B007BE1 /* libPods-ReactNativePoC-tescornappbrownfield.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactNativePoC-tescornappbrownfield.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		76CCAB8045F64D6BAE6BF234 /* ReactNativeHostManager.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; path = ReactNativeHostManager.swift; sourceTree = "<group>"; };
+		9341A176241FEB2C4FC695AB /* Pods-ReactNativePoC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativePoC.release.xcconfig"; path = "Target Support Files/Pods-ReactNativePoC/Pods-ReactNativePoC.release.xcconfig"; sourceTree = "<group>"; };
+		94FE1C9810324EB2A7BCD9EF /* SplashScreen.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SplashScreen.storyboard; path = ReactNativePoC/SplashScreen.storyboard; sourceTree = "<group>"; };
+		9812360C29004F63BEE79F6C /* State.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = State.swift; path = tescornappbrownfield/State.swift; sourceTree = "<group>"; };
+		A147216301D74148986074E2 /* Messaging.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; path = Messaging.swift; sourceTree = "<group>"; };
+		B2FE2C8A8C8B476D9B099EBE /* ReactNativeDelegate.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; path = ReactNativeDelegate.swift; sourceTree = "<group>"; };
+		C2CADCFDAF17441AB31F9D68 /* ExpoAppDelegate.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = ExpoAppDelegate.swift; path = tescornappbrownfield/ExpoAppDelegate.swift; sourceTree = "<group>"; };
+		CA3E9395153F4000AD61CCDF /* State.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		DF310CE4014947A984A55D97 /* Messaging.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = Messaging.swift; path = tescornappbrownfield/Messaging.swift; sourceTree = "<group>"; };
+		DFBA88847BF1D0BB2FADDABD /* Pods-ReactNativePoC-tescornappbrownfield.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativePoC-tescornappbrownfield.release.xcconfig"; path = "Target Support Files/Pods-ReactNativePoC-tescornappbrownfield/Pods-ReactNativePoC-tescornappbrownfield.release.xcconfig"; sourceTree = "<group>"; };
+		E2BC2D0296604E4DB2454B93 /* ReactNativeView.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; path = ReactNativeView.swift; sourceTree = "<group>"; };
+		E4AD4B48B17DD0729545C156 /* libPods-ReactNativePoC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactNativePoC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6B506F5119947BD999EAAF7 /* ReactNativeView.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = ReactNativeView.swift; path = tescornappbrownfield/ReactNativeView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		51B7F10A2F503CBE00AAA1FC /* ReactNativePoC */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			path = ReactNativePoC;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		51B7F1052F503CBE00AAA1FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43C1A480771BE5DDBAB16BB0 /* libPods-ReactNativePoC.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		580216DA63EC3B42CF3495DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3772913CB5293EC5D63B732 /* libPods-ReactNativePoC-tescornappbrownfield.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		106B21D09E8EF1E34A0EDE1C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				08B5040E3631F44BD2487D4E /* Pods-ReactNativePoC.debug.xcconfig */,
+				9341A176241FEB2C4FC695AB /* Pods-ReactNativePoC.release.xcconfig */,
+				3B85C0994F0D738DDD4D24EC /* Pods-ReactNativePoC-tescornappbrownfield.debug.xcconfig */,
+				DFBA88847BF1D0BB2FADDABD /* Pods-ReactNativePoC-tescornappbrownfield.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		51B7F0FF2F503CBE00AAA1FC = {
+			isa = PBXGroup;
+			children = (
+				51B7F10A2F503CBE00AAA1FC /* ReactNativePoC */,
+				51B7F1092F503CBE00AAA1FC /* Products */,
+				1BDE3974917DBF805570966C /* PrivacyInfo.xcprivacy */,
+				106B21D09E8EF1E34A0EDE1C /* Pods */,
+				65B1803BF8BF55A15E6998D2 /* Frameworks */,
+				94FE1C9810324EB2A7BCD9EF /* SplashScreen.storyboard */,
+				AB96922CBE60486EA3E5E256 /* tescornappbrownfield */,
+				51B7FDE12F51F11200AAA1FC /* Recovered References */,
+			);
+			sourceTree = "<group>";
+		};
+		51B7F1092F503CBE00AAA1FC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				51B7F1082F503CBE00AAA1FC /* TescoRNApp.app */,
+				414C160A2C324483ACF1EF71 /* tescornappbrownfield.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		51B7FDE12F51F11200AAA1FC /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				035B996C00BC4AA48A488B3A /* ReactNativeHostManager.swift */,
+				DF310CE4014947A984A55D97 /* Messaging.swift */,
+				9812360C29004F63BEE79F6C /* State.swift */,
+				E6B506F5119947BD999EAAF7 /* ReactNativeView.swift */,
+				354E2B66EA9948F2BF21FF48 /* ReactNativeViewController.swift */,
+				C2CADCFDAF17441AB31F9D68 /* ExpoAppDelegate.swift */,
+				44F76CF5399240E691B74C66 /* ReactNativeDelegate.swift */,
+				BB22CC33DD44EE55FF667788 /* BridgeEvents.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		65B1803BF8BF55A15E6998D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4AD4B48B17DD0729545C156 /* libPods-ReactNativePoC.a */,
+				5F2997BF01A4C5CC7B007BE1 /* libPods-ReactNativePoC-tescornappbrownfield.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AB96922CBE60486EA3E5E256 /* tescornappbrownfield */ = {
+			isa = PBXGroup;
+			children = (
+				76CCAB8045F64D6BAE6BF234 /* ReactNativeHostManager.swift */,
+				A147216301D74148986074E2 /* Messaging.swift */,
+				CA3E9395153F4000AD61CCDF /* State.swift */,
+				E2BC2D0296604E4DB2454B93 /* ReactNativeView.swift */,
+				333E5553A7574157B08688BF /* ReactNativeViewController.swift */,
+				5B3307992B764AB0A9D84BE9 /* ExpoAppDelegate.swift */,
+				B2FE2C8A8C8B476D9B099EBE /* ReactNativeDelegate.swift */,
+			);
+			name = tescornappbrownfield;
+			path = /Users/david.duarte/Parser/ReactNativePoC/ios/tescornappbrownfield;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2A826E7878044C2B97403721 /* tescornappbrownfield */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6301644120EC43F9822F296D /* Build configuration list for PBXNativeTarget "tescornappbrownfield" */;
+			buildPhases = (
+				0CD13CA5BFC0F22B47935D06 /* [CP] Check Pods Manifest.lock */,
+				C3D4E5F6A7B8C90AB12C3D4E /* Bundle React Native code and images */,
+				57A4D3A14BA140508845E523 /* Sources */,
+				580216DA63EC3B42CF3495DB /* Frameworks */,
+				F948EEA35D523BEBCE5F9795 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tescornappbrownfield;
+			productName = tescornappbrownfield;
+			productReference = 414C160A2C324483ACF1EF71 /* tescornappbrownfield.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		51B7F1072F503CBE00AAA1FC /* ReactNativePoC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 51B7F1132F503CC100AAA1FC /* Build configuration list for PBXNativeTarget "ReactNativePoC" */;
+			buildPhases = (
+				44947DBC271CA6E24867D39F /* [CP] Check Pods Manifest.lock */,
+				51B7F1042F503CBE00AAA1FC /* Sources */,
+				51B7F1052F503CBE00AAA1FC /* Frameworks */,
+				51B7F1062F503CBE00AAA1FC /* Resources */,
+				C3D4E5F6A7B8C90AB12C3D4E /* Bundle React Native code and images */,
+				47C4EA18EC5AD99E5463F313 /* [CP] Embed Pods Frameworks */,
+				387BF9D14A6946B7168D6213 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				51B7F10A2F503CBE00AAA1FC /* ReactNativePoC */,
+			);
+			name = ReactNativePoC;
+			productName = ReactNativePoC;
+			productReference = 51B7F1082F503CBE00AAA1FC /* TescoRNApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		51B7F1002F503CBE00AAA1FC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					51B7F1072F503CBE00AAA1FC = {
+						CreatedOnToolsVersion = 26.2;
+					};
+				};
+			};
+			buildConfigurationList = 51B7F1032F503CBE00AAA1FC /* Build configuration list for PBXProject "ReactNativePoC" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 51B7F0FF2F503CBE00AAA1FC;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 51B7F1092F503CBE00AAA1FC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				51B7F1072F503CBE00AAA1FC /* ReactNativePoC */,
+				2A826E7878044C2B97403721 /* tescornappbrownfield */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		51B7F1062F503CBE00AAA1FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94AFAEC2E6E349C274D88094 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0CD13CA5BFC0F22B47935D06 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReactNativePoC-tescornappbrownfield-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		387BF9D14A6946B7168D6213 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReactNativePoC/Pods-ReactNativePoC-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReactNativePoC/Pods-ReactNativePoC-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReactNativePoC/Pods-ReactNativePoC-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44947DBC271CA6E24867D39F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReactNativePoC-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		47C4EA18EC5AD99E5463F313 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReactNativePoC/Pods-ReactNativePoC-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReactNativePoC/Pods-ReactNativePoC-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReactNativePoC/Pods-ReactNativePoC-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3D4E5F6A7B8C90AB12C3D4E /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"${REACT_NATIVE_PATH}/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"${REACT_NATIVE_PATH}/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT \\\"$REACT_NATIVE_XCODE\\\"\"\n";
+		};
+		F948EEA35D523BEBCE5F9795 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReactNativePoC-tescornappbrownfield/Pods-ReactNativePoC-tescornappbrownfield-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReactNativePoC-tescornappbrownfield/Pods-ReactNativePoC-tescornappbrownfield-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReactNativePoC-tescornappbrownfield/Pods-ReactNativePoC-tescornappbrownfield-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		51B7F1042F503CBE00AAA1FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57A4D3A14BA140508845E523 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0B086FBC0884415BD4FB59E /* ReactNativeHostManager.swift in Sources */,
+				2FC5F414258D4384BE9B3A34 /* Messaging.swift in Sources */,
+				F4FB62B7B7E1409F97CE18B7 /* State.swift in Sources */,
+				92E9B6AF41404E69AD9A373F /* ReactNativeView.swift in Sources */,
+				E1596F3F9B3048CCA391D095 /* ReactNativeViewController.swift in Sources */,
+				D3CF9929312C403C9EA8316C /* ExpoAppDelegate.swift in Sources */,
+				C614EFD0324141B3947A3645 /* ReactNativeDelegate.swift in Sources */,
+				AA11BB22CC33DD44EE55FF66 /* BridgeEvents.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		514E99E1787F4F018DBA34AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFBA88847BF1D0BB2FADDABD /* Pods-ReactNativePoC-tescornappbrownfield.release.xcconfig */;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_ENTITLEMENTS = tescornappbrownfield/tescornappbrownfield.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = tescornappbrownfield/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = tescornappbrownfield;
+				INFOPLIST_KEY_CFBundleShortVersionString = 0.1.0;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parser.rnpoc.ReactNativePoC.tescornappbrownfield;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_SCRIPT_SANDBOXING = NO;
+			};
+			name = Release;
+		};
+		51B7F1112F503CC100AAA1FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_CPLUSPLUSFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HERMES = true;
+			};
+			name = Debug;
+		};
+		51B7F1122F503CC100AAA1FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_CPLUSPLUSFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
+				USE_HERMES = true;
+			};
+			name = Release;
+		};
+		51B7F1142F503CC100AAA1FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08B5040E3631F44BD2487D4E /* Pods-ReactNativePoC.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ReactNativePoC/TescoRNApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parser.rnpoc.ReactNativePoC.brownfield;
+				PRODUCT_NAME = TescoRNApp;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ReactNativePoC/ReactNativePoC-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		51B7F1152F503CC100AAA1FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9341A176241FEB2C4FC695AB /* Pods-ReactNativePoC.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ReactNativePoC/TescoRNApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parser.rnpoc.ReactNativePoC.brownfield;
+				PRODUCT_NAME = TescoRNApp;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ReactNativePoC/ReactNativePoC-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		6CAA20CBD00A43C0A375B2D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B85C0994F0D738DDD4D24EC /* Pods-ReactNativePoC-tescornappbrownfield.debug.xcconfig */;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_ENTITLEMENTS = tescornappbrownfield/tescornappbrownfield.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = tescornappbrownfield/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = tescornappbrownfield;
+				INFOPLIST_KEY_CFBundleShortVersionString = 0.1.0;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parser.rnpoc.ReactNativePoC.tescornappbrownfield;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_SCRIPT_SANDBOXING = NO;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		51B7F1032F503CBE00AAA1FC /* Build configuration list for PBXProject "ReactNativePoC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51B7F1112F503CC100AAA1FC /* Debug */,
+				51B7F1122F503CC100AAA1FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		51B7F1132F503CC100AAA1FC /* Build configuration list for PBXNativeTarget "ReactNativePoC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51B7F1142F503CC100AAA1FC /* Debug */,
+				51B7F1152F503CC100AAA1FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6301644120EC43F9822F296D /* Build configuration list for PBXNativeTarget "tescornappbrownfield" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CAA20CBD00A43C0A375B2D9 /* Debug */,
+				514E99E1787F4F018DBA34AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 51B7F1002F503CBE00AAA1FC /* Project object */;
+}

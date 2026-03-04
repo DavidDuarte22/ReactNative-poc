@@ -1,0 +1,44 @@
+diff --git a/node_modules/expo-brownfield/gradle-plugins/brownfield/src/main/kotlin/expo/modules/plugin/ExpoBrownfieldSetupPlugin.kt b/node_modules/expo-brownfield/gradle-plugins/brownfield/src/main/kotlin/expo/modules/plugin/ExpoBrownfieldSetupPlugin.kt
+index 21f3463..c62e979 100644
+--- a/node_modules/expo-brownfield/gradle-plugins/brownfield/src/main/kotlin/expo/modules/plugin/ExpoBrownfieldSetupPlugin.kt
++++ b/node_modules/expo-brownfield/gradle-plugins/brownfield/src/main/kotlin/expo/modules/plugin/ExpoBrownfieldSetupPlugin.kt
+@@ -189,7 +189,7 @@ class ExpoBrownfieldSetupPlugin : Plugin<Project> {
+   private fun getReactNativeVersion(project: Project): String {
+     return try {
+       val process =
+-        ProcessBuilder("node", "--print", "require('react-native/package.json').version")
++        ProcessBuilder(System.getProperty("node.executable", "node"), "--print", "require('react-native/package.json').version")
+           .directory(project.rootProject.projectDir)
+           .redirectErrorStream(true)
+           .start()
+@@ -218,7 +218,7 @@ class ExpoBrownfieldSetupPlugin : Plugin<Project> {
+    */
+   private fun getHermesVersion(project: Project): String {
+     val process =
+-      ProcessBuilder("node", "--print", "require('hermes-compiler/package.json').version")
++      ProcessBuilder(System.getProperty("node.executable", "node"), "--print", "require('hermes-compiler/package.json').version")
+         .directory(project.rootProject.projectDir)
+         .redirectErrorStream(true)
+         .start()
+diff --git a/node_modules/expo-brownfield/gradle-plugins/publish/src/main/kotlin/expo/modules/plugin/utils.kt b/node_modules/expo-brownfield/gradle-plugins/publish/src/main/kotlin/expo/modules/plugin/utils.kt
+index f0c356a..4f14865 100644
+--- a/node_modules/expo-brownfield/gradle-plugins/publish/src/main/kotlin/expo/modules/plugin/utils.kt
++++ b/node_modules/expo-brownfield/gradle-plugins/publish/src/main/kotlin/expo/modules/plugin/utils.kt
+@@ -114,7 +114,7 @@ internal fun getConfigExtension(project: Project): ExpoPublishExtension {
+ internal fun getReactNativeVersion(project: Project): String {
+   return try {
+     val process =
+-      ProcessBuilder("node", "--print", "require('react-native/package.json').version")
++      ProcessBuilder(System.getProperty("node.executable", "node"), "--print", "require('react-native/package.json').version")
+         .directory(project.rootProject.projectDir)
+         .redirectErrorStream(true)
+         .start()
+@@ -143,7 +143,7 @@ internal fun getReactNativeVersion(project: Project): String {
+    */
+   internal fun getHermesVersion(project: Project): String {
+     val process =
+-      ProcessBuilder("node", "--print", "require('hermes-compiler/package.json').version")
++      ProcessBuilder(System.getProperty("node.executable", "node"), "--print", "require('hermes-compiler/package.json').version")
+         .directory(project.rootProject.projectDir)
+         .redirectErrorStream(true)
+         .start()

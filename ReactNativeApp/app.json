@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "TescoRNApp",
+    "slug": "tesco-rn-app",
+    "version": "0.1.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.parser.rnpoc.ReactNativePoC.brownfield"
+    },
+    "plugins": [
+      "expo-brownfield"
+    ],
+    "android": {
+      "package": "com.parser.rnpoc.ReactNativePoC.brownfield"
+    }
+  }
+}

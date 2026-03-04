@@ -6,23 +6,41 @@ yarn-error.log
 # Metro bundler
 .metro-health-check*
 
-# React Native generated
+# React Native generated (autolinking + Codegen output)
 build/
 
-# iOS
-# Stale workspace that Xcode auto-recreates at root when ios/ workspace is moved
-/ReactNativePoC.xcworkspace/
-/Pods/
-ios/Pods/
-ios/ReactNativePoC.xcworkspace/xcuserdata/
-ios/ReactNativePoC.xcodeproj/xcuserdata/
-ios/ReactNativePoC.xcodeproj/project.xcworkspace/xcuserdata/
-ios/.xcode.env.local
+# iOS — ReactNativeApp
+ReactNativeApp/ios/Pods/
+ReactNativeApp/ios/build/
+ReactNativeApp/ios/ReactNativePoC.xcworkspace/xcuserdata/
+ReactNativeApp/ios/ReactNativePoC.xcodeproj/xcuserdata/
+ReactNativeApp/ios/ReactNativePoC.xcodeproj/project.xcworkspace/xcuserdata/
+ReactNativeApp/ios/.xcode.env.local
+
+# Android — ReactNativeApp
+ReactNativeApp/android/.gradle/
+ReactNativeApp/android/build/
+ReactNativeApp/android/app/build/
+ReactNativeApp/android/local.properties
+ReactNativeApp/android/**/*.keystore
+!ReactNativeApp/android/app/debug.keystore
+
+# Android — TescoAndroidApp (native consumer)
+TescoAndroidApp/.gradle/
+TescoAndroidApp/.idea/*
+!TescoAndroidApp/.idea/gradle.xml
+TescoAndroidApp/build/
+TescoAndroidApp/app/build/
+TescoAndroidApp/local.properties
+TescoAndroidApp/**/*.keystore
+TescoAndroidApp/settings-gradle.lockfile
+
+# Android — brownfield library build outputs
+ReactNativeApp/android/brownfield/libsDebug/
+
+# Xcode
 *.xcuserstate
 DerivedData/
-
-# TescoNativeBridgePod generated
-ios/TescoNativeBridgePod/build/
 
 # macOS
 .DS_Store
@@ -30,3 +48,10 @@ ios/TescoNativeBridgePod/build/
 # Environment
 .env
 .env.local
+
+# Legacy root-level paths (pre-monorepo, kept for safety)
+/ReactNativePoC.xcworkspace/
+ios/Pods/
+ios/build/
+ios/ReactNativePoC.xcworkspace/xcuserdata/
+ios/TescoNativeBridgePod/build/

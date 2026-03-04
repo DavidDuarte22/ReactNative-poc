@@ -1,0 +1,31 @@
+{
+  "name": "TescoRNApp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "ios": "expo run:ios",
+    "postinstall": "patch-package && node scripts/patch-node-path.js"
+  },
+  "dependencies": {
+    "expo": "~55.0.0",
+    "expo-brownfield": "~55.0.0",
+    "expo-modules-core": "^55.0.12",
+    "react": "19.2.3",
+    "react-native": "0.83.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@react-native-community/cli": "19.1.2",
+    "@react-native-community/cli-platform-ios": "19.1.2",
+    "@react-native/babel-preset": "0.83.2",
+    "@react-native/metro-config": "0.83.2",
+    "@react-native/typescript-config": "0.83.2",
+    "@types/react": "^19.1.1",
+    "patch-package": "^8.0.1",
+    "typescript": "5.0.4"
+  },
+  "engines": {
+    "node": ">=20.19.4"
+  }
+}

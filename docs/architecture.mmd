@@ -1,0 +1,24 @@
+graph LR
+    subgraph RN["⚛️  RN Team"]
+        src["App.tsx"]
+        bridge["Native Bridge\nSwift / Kotlin"]
+    end
+
+    subgraph IOS["🍎  iOS Team"]
+        ios_app["TescoUIKitApp\nSwiftUI"]
+        ios_events["BridgeEvents\nCombine Publisher"]
+    end
+
+    subgraph AND["🤖  Android Team"]
+        and_app["TescoAndroidApp\nJetpack Compose"]
+        and_events["BridgeEvents\nSharedFlow"]
+    end
+
+    RN -->|"XCFramework\n(RN + Hermes)"| IOS
+    RN -->|"AAR library"| AND
+
+    ios_app -->|"initialProps\nuserId · locale"| src
+    src -->|"TurboModule"| ios_events
+
+    and_app -->|"launchOptions\nuserId · locale"| src
+    src -->|"BrownfieldMessaging"| and_events
